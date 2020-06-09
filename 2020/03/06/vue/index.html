@@ -8,14 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>vue mixins | 黑掩盖千万重</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Mixins是一种分发Vue组件中可复用功能的非常灵活的一种方式。  ####什么时候使用Mixins  11. 页面的风格不用，但是执行的方法和需要的数据类似，我们是选择每个都写呢还是提取出公共部分呢？  ###基础实例  我们有一对不同的组件，它们的作用是切换一个状态布尔值，一个模态框和一个提示框。这些提示框和模态框除了在功能上，没有其他共同点：它们看起来不一样，用法不一样，但是逻辑一样。">
+  <meta name="description" content="Mixins是一种分发Vue组件中可复用功能的非常灵活的一种方式。">
+<meta name="keywords" content="vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue mixins">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;06&#x2F;vue&#x2F;index.html">
 <meta property="og:site_name" content="黑掩盖千万重">
-<meta property="og:description" content="Mixins是一种分发Vue组件中可复用功能的非常灵活的一种方式。  ####什么时候使用Mixins  11. 页面的风格不用，但是执行的方法和需要的数据类似，我们是选择每个都写呢还是提取出公共部分呢？  ###基础实例  我们有一对不同的组件，它们的作用是切换一个状态布尔值，一个模态框和一个提示框。这些提示框和模态框除了在功能上，没有其他共同点：它们看起来不一样，用法不一样，但是逻辑一样。">
+<meta property="og:description" content="Mixins是一种分发Vue组件中可复用功能的非常灵活的一种方式。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-06T09:00:28.325Z">
+<meta property="og:updated_time" content="2020-06-09T03:11:34.030Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="黑掩盖千万重" type="application/atom+xml">
@@ -158,7 +159,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>  Mixins是一种分发Vue组件中可复用功能的非常灵活的一种方式。<br>  ####什么时候使用Mixins<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. 页面的风格不用，但是执行的方法和需要的数据类似，我们是选择每个都写呢还是提取出公共部分呢？</span><br></pre></td></tr></table></figure><br>  ###基础实例<br>  我们有一对不同的组件，它们的作用是切换一个状态布尔值，一个模态框和一个提示框。这些提示框和模态框除了在功能上，没有其他共同点：它们看起来不一样，用法不一样，但是逻辑一样。<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 模态框</span><br><span class="line">const Modal = &#123;</span><br><span class="line">  template: &apos;#modal&apos;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      isShowing: false</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    toggleShow() &#123;</span><br><span class="line">      this.isShowing = !this.isShowing;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    appChild: Child</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>  Mixins是一种分发Vue组件中可复用功能的非常灵活的一种方式。<br>  <a id="more"></a><br>  ####什么时候使用Mixins<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. 页面的风格不用，但是执行的方法和需要的数据类似，我们是选择每个都写呢还是提取出公共部分呢？</span><br></pre></td></tr></table></figure><br>  ###基础实例<br>  我们有一对不同的组件，它们的作用是切换一个状态布尔值，一个模态框和一个提示框。这些提示框和模态框除了在功能上，没有其他共同点：它们看起来不一样，用法不一样，但是逻辑一样。<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 模态框</span><br><span class="line">const Modal = &#123;</span><br><span class="line">  template: &apos;#modal&apos;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      isShowing: false</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    toggleShow() &#123;</span><br><span class="line">      this.isShowing = !this.isShowing;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    appChild: Child</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 提示框</span><br><span class="line">const Tooltip = &#123;</span><br><span class="line">  template: &apos;#tooltip&apos;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      isShowing: false</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    toggleShow() &#123;</span><br><span class="line">      this.isShowing = !this.isShowing;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    appChild: Child</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>  ####解决办法如下：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">const toggle = &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        isshowing: false</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        toggleShow() &#123;</span><br><span class="line">            this.isshowing = !this.isshowing</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 下面即可使用了</span><br><span class="line">// mixins: [变量名]</span><br><span class="line"></span><br><span class="line">const Modal = &#123;</span><br><span class="line">  template: &apos;#modal&apos;,</span><br><span class="line">  mixins: [toggle],</span><br><span class="line">  components: &#123;</span><br><span class="line">    appChild: Child</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const Tooltip = &#123;</span><br><span class="line">  template: &apos;#tooltip&apos;,</span><br><span class="line">  mixins: [toggle],</span><br><span class="line">  components: &#123;</span><br><span class="line">    appChild: Child</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><br>  ####如果你是以vue-cli创建的项目来写，可以这样</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// mixin.js</span><br><span class="line"></span><br><span class="line">export const toggle = &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        isshowing: false</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        toggleShow() &#123;</span><br><span class="line">            this.isshowing = !this.isshowing</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -192,6 +193,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -255,6 +267,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/06/09/%E5%BE%AE%E5%89%8D%E7%AB%AF/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          微前端 qiankun
+        
+      </div>
+    </a>
   
   
     <a href="/2019/05/15/a/" id="article-nav-older" class="article-nav-link-wrap">
@@ -402,6 +423,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
@@ -410,15 +435,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">qiankun</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue vuerouter</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue vuerouter</a>
               </li>
             
             <div class="clearfix"></div>

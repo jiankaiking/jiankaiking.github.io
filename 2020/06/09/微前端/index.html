@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 黑掩盖千万重</title>
+  <title>微前端 qiankun | 黑掩盖千万重</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="黑掩盖千万重">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2020&#x2F;index.html">
+  <meta name="description" content="微前端是什么、为什么要做微前端、qiankun是什么。">
+<meta name="keywords" content="qiankun">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微前端 qiankun">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;06&#x2F;09&#x2F;%E5%BE%AE%E5%89%8D%E7%AB%AF&#x2F;index.html">
 <meta property="og:site_name" content="黑掩盖千万重">
+<meta property="og:description" content="微前端是什么、为什么要做微前端、qiankun是什么。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-06-09T03:41:29.740Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="黑掩盖千万重" type="application/atom+xml">
@@ -135,36 +139,82 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-微前端" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/09/%E5%BE%AE%E5%89%8D%E7%AB%AF/" class="archive-article-date">
-  	<time datetime="2020-06-09T03:18:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/09/%E5%BE%AE%E5%89%8D%E7%AB%AF/">微前端 qiankun</a>
+    <h1 class="article-title" itemprop="name">
+      微前端 qiankun
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/06/09/%E5%BE%AE%E5%89%8D%E7%AB%AF/" class="archive-article-date">
+  	<time datetime="2020-06-09T03:18:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>微前端是什么、为什么要做微前端、qiankun是什么。 </p>
+<a id="more"></a>
+<p>传送门： <a href="https://yq.aliyun.com/articles/715922">可能是你见过最完善的微前端解决方案 </a>&amp; <a href="https://github.com/umijs/qiankun">qiankun</a><br>下面直接进入实战教程。<br>鉴于qiankun文档只有寥寥十几行，这里做一个尽量详细的实战示例描述:</p>
+<ul>
+<li><p>微前端主应用与子应用如何构建</p>
+</li>
+<li><p>主应用与子应用通信(静态，无法监测到值变化)</p>
+</li>
+<li><p>主、子，各应用间动态通信(动态，各应用间实时监听，同步数据)</p>
+</li>
+<li><p>主应用资源下发至子应用</p>
+</li>
+<li><p>微前端鉴权方案</p>
+<ul>
+<li>异步注册(主应用异步获取子应用注册表并将子应用对应的路由下发至子应用)</li>
+<li>异步路由(使用应用间通信，通知子应用路由数据，子应用在内部addRoutes异步插入路由)</li>
+<li>各应用间路由基础管理</li>
+<li>公共资源处理</li>
+</ul>
+</li>
+</ul>
+<h2 id="构建主应用"><a href="#构建主应用" class="headerlink" title="构建主应用"></a>构建主应用</h2><p>   <strong>构建主应用</strong><br>     1. 创建一个主项目工程目录<br>     2. npm install qiankun 下载微前端方案依赖<br>     3. 改造主项目：</p>
+<blockquote>
+<p>在main.js中</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">// 导入qiankun内置函数</span><br><span class="line">  import &#123;</span><br><span class="line">      registerMicroApps, // 注册子应用</span><br><span class="line">      runAfterFirstMounted, // 第一个子应用装载完毕</span><br><span class="line">      setDefaultMountApp, // 设置默认装载子应用</span><br><span class="line">      start // 启动</span><br><span class="line">  &#125; from <span class="string">"qiankun"</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">let</span> app = null;</span><br><span class="line">  /**</span><br><span class="line">   * 渲染函数</span><br><span class="line">   * appContent 子应用html</span><br><span class="line">   * loading 如果主应用设置loading效果，可不要</span><br><span class="line">   */</span><br><span class="line">  <span class="keyword">function</span> render(&#123; appContent, loading &#125; = &#123;&#125;) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!app) &#123;</span><br><span class="line">          app = new Vue(&#123;</span><br><span class="line">              el: <span class="string">"#container"</span>,</span><br><span class="line">              router,</span><br><span class="line">              store,</span><br><span class="line">              <span class="function"><span class="title">data</span></span>() &#123;</span><br><span class="line">                  <span class="built_in">return</span> &#123;</span><br><span class="line">                      content: appContent,</span><br><span class="line">                      loading</span><br><span class="line">                  &#125;;</span><br><span class="line">              &#125;,</span><br><span class="line">              render(h) &#123;</span><br><span class="line">                  <span class="built_in">return</span> h(App, &#123;</span><br><span class="line">                      props: &#123;</span><br><span class="line">                      content: this.content,</span><br><span class="line">                      loading: this.loading</span><br><span class="line">                      &#125;</span><br><span class="line">                  &#125;);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          app.content = appContent;</span><br><span class="line">          app.loading = loading;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;; </span><br><span class="line">  </span><br><span class="line">  /**</span><br><span class="line">  * 路由监听</span><br><span class="line">  * @param &#123;*&#125; routerPrefix 前缀</span><br><span class="line">  */</span><br><span class="line">  <span class="keyword">function</span> genActiveRule(routerPrefix) &#123;</span><br><span class="line">      <span class="built_in">return</span> location =&gt; location.pathname.startsWith(routerPrefix);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  // 调用渲染主应用</span><br><span class="line">  render();</span><br><span class="line">  </span><br><span class="line">  // 注册子应用</span><br><span class="line">  registerMicroApps(</span><br><span class="line">      [</span><br><span class="line">          &#123;</span><br><span class="line">              name: <span class="string">"vue-aaa"</span></span><br><span class="line">              entry: <span class="string">"//localhost:7771"</span>,</span><br><span class="line">              render,</span><br><span class="line">              activeRule: genActiveRule(<span class="string">"/aaa"</span>)</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">              name: <span class="string">"vue-bbb"</span></span><br><span class="line">              entry: <span class="string">"//localhost:7772"</span>,</span><br><span class="line">              render,</span><br><span class="line">              activeRule: genActiveRule(<span class="string">"/bbb"</span>)</span><br><span class="line">          &#125;,</span><br><span class="line">      ],</span><br><span class="line">      &#123;</span><br><span class="line">          beforeLoad: [ </span><br><span class="line">              app =&gt; &#123;</span><br><span class="line">                  console.log(<span class="string">"before load"</span>, app);</span><br><span class="line">              &#125;</span><br><span class="line">          ], // 挂载前回调</span><br><span class="line">          beforeMount: [</span><br><span class="line">              app =&gt; &#123;</span><br><span class="line">                  console.log(<span class="string">"before mount"</span>, app);</span><br><span class="line">              &#125;</span><br><span class="line">          ], // 挂载后回调</span><br><span class="line">          afterUnmount: [</span><br><span class="line">              app =&gt; &#123;</span><br><span class="line">                  console.log(<span class="string">"after unload"</span>, app);</span><br><span class="line">              &#125;</span><br><span class="line">          ] // 卸载后回调</span><br><span class="line">      &#125;</span><br><span class="line">   )</span><br><span class="line">   </span><br><span class="line">   // 设置默认子应用,参数与注册子应用时genActiveRule(<span class="string">"/aaa"</span>)函数内的参数一致</span><br><span class="line">  setDefaultMountApp(<span class="string">"/aaa"</span>);</span><br><span class="line">  </span><br><span class="line">  // 第一个子应用加载完毕回调</span><br><span class="line">  runAfterFirstMounted(()=&gt;&#123;&#125;);</span><br><span class="line">  </span><br><span class="line">  // 启动微服务</span><br><span class="line">  start();</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -176,57 +226,128 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/09/%E5%BE%AE%E5%89%8D%E7%AB%AF/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/vue/" class="archive-article-date">
-  	<time datetime="2020-03-06T08:50:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/06/vue/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue mixins</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/vue/">vue mixins</a>
-    </h1>
+    <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NzUwNC8yNDAwNA==">
+  <script type="text/javascript">
+    (function(d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+
+      if (typeof LivereTower === 'function') { return; }
+
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+  <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+  
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -249,8 +370,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
